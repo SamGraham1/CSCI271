@@ -27,19 +27,20 @@
  * Purpose:
  * This program calculates the final numeric grade for a student based
  * on assignment scores, test scores, midterm, and final exam according
- * to the grading scheme in the course syllabus. The calculation includes
- * a corrected handling of assignment weights for the 60-80 E range.
+ * to the grading scheme in the course syllabus. It uses a StudentGrade
+ * class to implement an Abstract Data Type (ADT), separating application
+ * logic from grade calculation.
  *
  *************************************************************************/
 
 import java.util.*;
 
-public class CSCI271_Assignment1_SamGraham_W30654710
-{
+public class CSCI271_Assignment1_SamGraham_W30654710 {
+
     /*****************************main****************************
     * Description: Prompts the user to enter scores for assignments,
-    *              tests, midterm, and final exam, then calculates
-    *              the final numeric grade according to the syllabus.
+    *              tests, midterm, and final exam, creates a StudentGrade
+    *              object, then calculates and displays the final numeric grade.
     *
     * Parameters: args (input): command line arguments (not used)
     *
@@ -50,6 +51,47 @@ public class CSCI271_Assignment1_SamGraham_W30654710
     * Returns: none
     *
     * Called by: none
-    * Calls: none
+    * Calls: StudentGrade.calculateG()
     ************************************************************************/
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        final int NUM_ASSIGNMENTS = 7;
+        final int NUM_TESTS = 7;
+
+        double[] assignments = new double[NUM_ASSIGNMENTS];
+        double[] tests = new double[NUM_TESTS];
+
+        // ---- Input: Assignments ----
+        System.out.println("Enter " + NUM_ASSIGNMENTS + " assignment scores (0-100):");
+        for (int i = 0; i < NUM_ASSIGNMENTS; i++) {
+            System.out.print("Assignment " + (i + 1) + ": ");
+            assignments[i] = input.nextDouble();
+        }
+
+        // ---- Input: Tests ----
+        System.out.println("\nEnter " + NUM_TESTS + " test scores (0-100):");
+        for (int i = 0; i < NUM_TESTS; i++) {
+            System.out.print("Test " + (i + 1) + ": ");
+            tests[i] = input.nextDouble();
+        }
+
+        // ---- Input: Midterm and Final ----
+        System.out.print("\nEnter Midterm score (0-100): ");
+        double midterm = input.nextDouble();
+
+        System.out.print("Enter Final Exam score (0-100): ");
+        double finalExam = input.nextDouble();
+
+        // ---- Create ADT object ----
+        StudentGrade student = new StudentGrade(assignments, tests, midterm, finalExam);
+
+        // ---- Calculate final grade ----
+        double finalGrade = student.calculateG();
+
+        // ---- Output ----
+        System.out.printf("\nFinal numeric grade (G) = %.2f\n", finalGrade);
+
+        input.close();
+    }
 }
