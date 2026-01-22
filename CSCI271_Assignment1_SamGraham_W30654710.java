@@ -13,7 +13,7 @@
 *   interfere with the normal operation of the supplied grading code.
 *
 * Sam Graham
-* W300654719
+* W30654719
 ********************************************************************/
 
 /*************************************************************************
@@ -34,7 +34,7 @@
 
 import java.util.*;
 
-public class CSCI271_Assignment1_SamGraham_W300654719
+public class CSCI271_Assignment1_SamGraham_W30654719
 {
     /*****************************main****************************
     * Description: Prompts the user to enter scores for assignments,
