@@ -112,6 +112,22 @@ class StudentGrade {
     * Description: Creates a StudentGrade object with all relevant scores
     * 
     * Parameters:
-    * 
-    
+    * - assignments: array of assignment scores
+    * - tests: array of test scores
+    * - midterm: score of the midterm
+    * - finalExam: score of the final exam
+    *
+    * Pre: Scores should be valid numbers between 0-100
+    *
+    * Post: The object is ready to calculate final grades
+    *
+    * Returns: nothing
+    *
+    * Called by: main
+    ************************************************************************/
+    public StudentGrade(double[] assignments, double[] tests, double midterm, double finalExam) {
+        this.assignments = assignments;
+        this.tests = tests;
+        this.midterm = midterm;
+        this.finalExam = finalExam;
     }
