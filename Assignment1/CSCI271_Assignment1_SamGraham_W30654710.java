@@ -150,3 +150,35 @@ class StudentGrade {
         return 0.4 * finalExam + 0.2 * midterm + 0.1 * T;
     }
 
+    /*****************************calculateG****************************
+    * Description: Calculates the final numeric grade following the rules
+    * from the syllabus. Adjusts assignment weight for mid-range E values.
+    *
+    * Parameters: none
+    *
+    * Pre: Scores are initialized
+    *
+    * Post: Returns the final grade (G) as a number
+    *
+    * Returns: double - the final numeric grade
+    *
+    * Called by: main
+    ************************************************************************/
+    public double calculateG() {
+        double E = calculateE();
+        double A = Arrays.stream(assignments).average().orElse(0);
+        double T = Arrays.stream(tests).average().orElse(0);
+
+        if (E < 60) {
+            // Fail: exam/test portion too low
+            return E;
+        } else if (E < 80) {
+            // Mid-range: blend exam/test with assignments gradually
+            double W = (E - 60) / 20 * 0.3;  // assignment weight scales 0-30%
+            return (1 - W) * E + W * A;
+        } else {
+            // High grades: fixed 70/30 split for exams and assignments
+            return 0.4 * finalExam + 0.2 * midterm + 0.1 * T + 0.3 * A;
+        }
+    }
+}
