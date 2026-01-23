@@ -1,0 +1,18 @@
+1. Program Purpose and Structure
+
+The program calculates a student’s final numeric grade using assignment scores, test scores, a midterm, and a final exam. 
+It uses Java’s main() method, Scanner for input, loops to collect scores, and variables to store averages and weighted values. 
+The program can accept either manual input or redirected input from a file for testing.
+
+2. Core Logic and Calculations
+
+Assignment and test averages are calculated first, then combined with midterm and final exam scores using weighted formulas. 
+Conditional logic determines how the final grade is calculated based on test performance, ensuring that stronger test scores result 
+in higher weighted outcomes while weaker test scores limit assignment impact.
+
+3. Bug Awareness and Testing
+
+A logical bug occurred when input validation used || instead of &&, causing invalid scores to be accepted. 
+This was fixed by correctly checking that values fall between 0 and 100. The program was tested using command-line input redirection 
+to verify correctness and consistent output. Also the sum of the weights already represents the percentage so dividing by 70 scales E incorrectly.
+
