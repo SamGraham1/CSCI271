@@ -131,3 +131,22 @@ class StudentGrade {
         this.midterm = midterm;
         this.finalExam = finalExam;
     }
+
+    /*****************************calculateE****************************
+    * Description: Computes the portion of the grade based on tests and exams
+    *
+    * Parameters: none
+    *
+    * Pre: Scores have been entered
+    *
+    * Post: Returns the weighted exam/test score (E)
+    *
+    * Returns: double - the exam/test portion of the grade
+    *
+    * Called by: calculateG
+    ************************************************************************/
+    private double calculateE() {
+        double T = Arrays.stream(tests).average().orElse(0);
+        return 0.4 * finalExam + 0.2 * midterm + 0.1 * T;
+    }
+
