@@ -33,10 +33,16 @@
 * Was told not to include WID
 ********************************************************************/
 Public class CSCI271_Assignment2_SamGraham{
-
+    private double numerator;
+    private double denominator;
 
 
     public static void main(String[] args){
     
+    
     }
 }
+
+// Class Fraction{}
+//public static void greatestCommonDenominator(){}
+ 
