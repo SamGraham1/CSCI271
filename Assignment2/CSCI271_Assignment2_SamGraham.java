@@ -33,8 +33,7 @@
 * Was told not to include WID
 ********************************************************************/
 Public class CSCI271_Assignment2_SamGraham{
-    private double numerator;
-    private double denominator;
+    
 
 
     public static void main(String[] args){
@@ -43,6 +42,114 @@ Public class CSCI271_Assignment2_SamGraham{
     }
 }
 
-// Class Fraction{}
-//public static void greatestCommonDenominator(){}
+class Fraction {
+    private long numerator;
+    private long denominator;
+
+
+/********************* Constructors ************************/
+
+
+    public Fraction(long num, long denom)
+    {
+    // make sure denominator is not 0
+        if (denom == 0)
+        {
+            numerator = num;
+            denominator = 0;
+            return;
+        }
+    // find the greatest common divisor
+        long gcd = gcd(num, denom);
+        numerator = num / gcd;
+        denominator = denom / gcd;
+
+    // make sure denominator is positive
+        if (denominator < 0)
+        {
+            numerator = -numerator;
+            denominator = -denominator;
+        }
+    }
+
+    public Fraction(long num)
+    {   
+        numerator = num;
+        denominator = 1;
+    }
+    
+/********************* Accessors ************************/
+
+    public long getNumerator() {
+        return numerator;
+    }
+
+    public long getDenominator() {
+        return denominator;
+    }
+}
+
+/********************* Arithmetic Methods ************************/
+
+/**
+ * This method takes another Fraction object as a parameter and returns a new Fraction object that is the result of adding the two fractions together.
+ * 
+ * To add two fractions, we need to find a common denominator, which is the product of the two denominators. Then, we can add the two numerators together, 
+ * multiplying the first numerator by the second denominator and the second numerator by the first denominator. This is because when we add two fractions, 
+ * we are essentially adding the number of equal parts represented by the numerators, and the denominator tells us how many parts make up the whole.
+ * 
+ * The new Fraction object is created with the resulting numerator and denominator.
+ * 
+ * @param f The Fraction object to be added to this object.
+ * @return A new Fraction object that is the result of adding the two fractions together.
+ */
+public Fraction add(Fraction f){
+    long num = numerator * f.getDenominator() + denominator * f.getNumerator();
+    long denom = denominator * f.getDenominator();
+    return new Fraction(num, denom);
+}
+// subtraction
+public Fraction subtract(Fraction f) {
+    return add(f.negate());
+}
  
+// multiplication
+public Fraction multiply(Fraction f) {
+    long num = numerator * f.getNumerator();
+    long denom = denominator * f.getDenominator();
+    return new Fraction(num, denom);
+}
+
+// division
+public Fraction divide(Fraction f) {
+    return multiply(f.reciprocal());
+}
+
+// negate
+public Fraction negate() {
+    return new Fraction(-numerator, denominator);
+}
+
+public Fraction pow(int n) {
+    if (n == 0) {
+        return new Fraction(1);
+    }
+    if (n < 0) {
+        return new Fraction(denominator, numerator).pow(-n);
+    }
+
+    return new Fraction(
+        (long) Math.pow(numerator, n),
+        (long) Math.pow(denominator, n)
+    );
+}
+
+    /********************* toString ************************/
+
+    @Override
+    public String toString() {
+        if (denominator == 0) {
+            if (numerator == 0) return "NaN";
+            return numerator > 0 ? "Infinity" : "-Infinity";
+        }
+    }
