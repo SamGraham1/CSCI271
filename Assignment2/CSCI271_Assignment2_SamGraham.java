@@ -152,4 +152,21 @@ public Fraction pow(int n) {
             if (numerator == 0) return "NaN";
             return numerator > 0 ? "Infinity" : "-Infinity";
         }
+
+        if(denominator == 1) {
+            return String.valueOf(numerator);
+        }
+
+        return numerator + "/" + denominator;
+    }
+/********************* Helper Methods ************************/
+
+
+    private long gcd(long a, long b) {
+        if (b != 0) {
+            long temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
     }
