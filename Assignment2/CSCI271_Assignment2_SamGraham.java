@@ -148,6 +148,7 @@ class Fraction {
         denominator = denom / gcd;
 
         // make denominator positive
+        
         if (denominator < 0) {
             numerator = -numerator;
             denominator = -denominator;
