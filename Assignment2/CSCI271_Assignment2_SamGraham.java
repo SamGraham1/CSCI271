@@ -31,17 +31,77 @@ public class CSCI271_Assignment2_SamGraham {
 
     public static void main(String[] args) {
 
-        // Test cases
-        Fraction a = new Fraction(16);
-        Fraction b = new Fraction(3, 5).add(new Fraction(7));
-        Fraction c = new Fraction(6, 7);
+    System.out.println("===== TASK 1: Constructors & Normalization =====");
 
-        Fraction result = c.multiply(a.divide(b));
-        System.out.println(result);
+    System.out.println("Test 1.1: new Fraction(6, -24)  // expect -1/4");
+    System.out.println(new Fraction(6, -24));
 
-        Fraction test = new Fraction(1, 3);
-        System.out.println(test.pow(-3));
-    }
+    System.out.println("Test 1.2: new Fraction(0, 8)    // expect 0");
+    System.out.println(new Fraction(0, 8));
+
+    System.out.println("Test 1.3: new Fraction(7)       // expect 7");
+    System.out.println(new Fraction(7));
+
+    System.out.println("\n===== TASK 2: toString Special Cases =====");
+
+    System.out.println("Test 2.1: new Fraction(23, 0)   // expect Infinity");
+    System.out.println(new Fraction(23, 0));
+
+    System.out.println("Test 2.2: new Fraction(-6, 0)   // expect -Infinity");
+    System.out.println(new Fraction(-6, 0));
+
+    System.out.println("Test 2.3: new Fraction(0, 0)    // expect NaN");
+    System.out.println(new Fraction(0, 0));
+
+    System.out.println("Test 2.4: new Fraction(7, 1)    // expect 7");
+    System.out.println(new Fraction(7, 1));
+
+    System.out.println("\n===== TASK 3: Arithmetic Operations =====");
+
+    System.out.println("Test 3.1: 1/3 + 1/6             // expect 1/2");
+    System.out.println(new Fraction(1,3).add(new Fraction(1,6)));
+
+    System.out.println("Test 3.2: 3/4 - 1/4             // expect 1/2");
+    System.out.println(new Fraction(3,4).subtract(new Fraction(1,4)));
+
+    System.out.println("Test 3.3: 2/3 * 3/4             // expect 1/2");
+    System.out.println(new Fraction(2,3).multiply(new Fraction(3,4)));
+
+    System.out.println("Test 3.4: 2/3 / 4/5             // expect 5/6");
+    System.out.println(new Fraction(2,3).divide(new Fraction(4,5)));
+
+    System.out.println("\n===== TASK 3: Negate =====");
+
+    System.out.println("Test 4.1: negate(5/7)           // expect -5/7");
+    System.out.println(new Fraction(5,7).negate());
+
+    System.out.println("Test 4.2: negate(Infinity)      // expect -Infinity");
+    System.out.println(new Fraction(5,0).negate());
+
+    System.out.println("Test 4.3: negate(NaN)           // expect NaN");
+    System.out.println(new Fraction(0,0).negate());
+
+    System.out.println("\n===== TASK 3: Power =====");
+
+    System.out.println("Test 5.1: (2/3)^2               // expect 4/9");
+    System.out.println(new Fraction(2,3).pow(2));
+
+    System.out.println("Test 5.2: (5/9)^0               // expect 1");
+    System.out.println(new Fraction(5,9).pow(0));
+
+    System.out.println("Test 5.3: (1/3)^-3              // expect 27");
+    System.out.println(new Fraction(1,3).pow(-3));
+
+    System.out.println("\n===== TASK 4: Full Assignment Example =====");
+
+    Fraction a = new Fraction(16);
+    Fraction b = new Fraction(3,5).add(new Fraction(7));
+    Fraction c = new Fraction(6,7);
+    Fraction results = c.multiply(a.divide(b));
+
+    System.out.println("Final Example Result            // expect 240/133");
+    System.out.println(results);
+}
 }
 
 /*******************************************************************
