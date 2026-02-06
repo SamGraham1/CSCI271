@@ -101,7 +101,8 @@ public class CSCI271_Assignment2_SamGraham {
 
     System.out.println("Final Example Result            // expect 240/133");
     System.out.println(results);
-}
+
+    }
 }
 
 /*******************************************************************
