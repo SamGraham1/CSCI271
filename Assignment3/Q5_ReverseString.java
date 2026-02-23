@@ -5,7 +5,7 @@
  * Question 4 – Recursive Digit Counter
  *
  * Name: Sam Graham
- * Date: February 2026
+ * Date: 2/25/2026
  *
  * Description:
  * This program reads a long integer N and a digit D
