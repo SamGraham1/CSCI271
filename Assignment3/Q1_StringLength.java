@@ -46,7 +46,7 @@ public class Q1_StringLength {
 
         System.out.println("The length of \"" + s + "\" is " + length(s));
 
-        input.close();
+        scanner.close();
     }
 
     /*
