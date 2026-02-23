@@ -2,17 +2,15 @@
  * ------------------------------------------------------------
  * CSCI 271 – Data Structures and Algorithm Complexity
  * Assignment III
- * Question 4 – Recursive Digit Counter
+ * Question 5 – Recursive String Reversal
  *
  * Name: Sam Graham
  * Date: 2/25/2026
  *
  * Description:
- * This program reads a long integer N and a digit D
- * from the user and recursively counts how many times
- * D appears in N.
+ * This program reads a string S from the user and
+ * displays it backwards using recursion.
  *
- * NOTE: N is declared as long as instructed.
  * No loops are used inside the recursive function.
  * Full runtime analysis is included below.
  * ------------------------------------------------------------
@@ -20,47 +18,36 @@
 
 import java.util.Scanner;
 
-public class Q4_DigitCounter {
+public class Q5_ReverseString {
 
     /**
-     * Recursive function to count occurrences of digit D in N.
+     * Recursive function to reverse a string.
      *
      * Base Case:
-     * If N == 0, return 0.
+     * If string length is 0 or 1, return the string.
      *
      * Recursive Case:
-     * Compare last digit (N % 10) with D.
-     * Then call function on N / 10.
+     * reverse(S) = reverse(S.substring(1)) + S.charAt(0)
      */
-    public static int countDigit(long N, int D) {
+    public static String reverse(String S) {
 
-        if (N == 0) {        // Base case
-            return 0;
+        if (S.length() <= 1) {   // Base case
+            return S;
         }
 
-        int lastDigit = (int)(N % 10);
-
-        if (lastDigit == D) {
-            return 1 + countDigit(N / 10, D);
-        } else {
-            return countDigit(N / 10, D);
-        }
+        return reverse(S.substring(1)) + S.charAt(0);
     }
 
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
 
-        System.out.print("Enter a long integer N: ");
-        long N = input.nextLong();
+        System.out.print("Enter a string: ");
+        String S = input.nextLine();
 
-        System.out.print("Enter a single digit D (0-9): ");
-        int D = input.nextInt();
+        String reversed = reverse(S);
 
-        int result = countDigit(N, D);
-
-        System.out.println("Digit " + D + " appears "
-                + result + " times in " + N + ".");
+        System.out.println("Reversed string: " + reversed);
 
         input.close();
     }
@@ -70,24 +57,20 @@ public class Q4_DigitCounter {
      * Algorithm Analysis
      * ------------------------------------------------
      *
-     * Let n be the number of digits in N.
+     * Let n be the length of the string.
      *
-     * Each recursive call removes one digit (N / 10).
-     * Each call performs constant work (mod, division, comparison).
+     * Each recursive call reduces string size by 1.
      *
      * Recurrence relation:
      *
-     * T(n) = T(n - 1) + 1      for n > 0
-     * T(0) = 1                 (base case)
+     * T(n) = T(n - 1) + 1
+     * T(1) = 1
      *
      * Expanding:
      *
      * T(n) = T(n - 2) + 2
-     * T(n) = T(n - 3) + 3
      * ...
-     * T(n) = T(0) + n
-     *
-     * Therefore:
+     * T(n) = T(1) + (n - 1)
      *
      * T(n) = n
      *
